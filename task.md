@@ -1,0 +1,27 @@
+# Checklist: Simulador de Comissionamento Lojas v2
+
+- [ ] 1. Scaffold do Vite + TailwindCSS
+  - [x] Criar projeto `simulador-lojas-v2` (`npm create vite@latest`)
+  - [x] Instalar TailwindCSS, PostCSS e Autoprefixer
+  - [x] Instalar dependências extras (`lucide-react`, `xlsx` e pacotes shadcn/ui)
+  - [ ] Configurar `tailwind.config.js` e `index.css`
+  - [ ] Limpar arquivos padrão do Vite
+- [x] 2. Componentes UI (shadcn/ui style manual)
+  - [x] Criar e exportar os componentes de UI (`Button.jsx`, `Card.jsx`, `Input.jsx`, `Label.jsx`, `Tabs.jsx`, `Badge.jsx`, `Separator.jsx`)
+- [x] 3. Lógica Determinística Client-Side
+  - [x] Criar `src/lib/calcularComissao.js` contendo a regra de negócios
+  - [x] Criar `src/lib/calcularComissao.test.js` 
+  - [x] Rodar testes primários para as funções criadas
+- [x] 4. Integração State e Hooks
+  - [x] Criar `src/hooks/useSimulador.js` para gerir o estado de entradas em toda a aplicação
+- [x] 5. Construção dos Componentes de Interação (Features)
+  - [x] Criar `TabelaFaixas.jsx` para guia de referência
+  - [x] Criar `FormularioConsultor.jsx` interativo aos campos e hook
+  - [x] Criar `ResultadoComissao.jsx` demonstrando cálculo em tempo real
+  - [x] Criar `UploadArquivo.jsx` que fará parser com SheetJS
+- [x] 6. Aplicação Principal e Estilização
+  - [x] Configurar `App.jsx` reunindo formulários e resultados em um Layout agradável.
+- [x] 7. Ajustes, Verificação Final e Instruções (README)
+  - [x] Teste real do funcionamento
+  - [x] Build test `npm run build`
+  - [x] Criação do README e entrega.

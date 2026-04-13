@@ -8,7 +8,8 @@
     "build": "vite build",
     "test:comissao": "node --experimental-strip-types --experimental-specifier-resolution=node src/lib/calcularComissao.test.ts",
     "test:faixa": "node --experimental-strip-types --experimental-specifier-resolution=node src/lib/calcularFaixaGeral.test.ts",
-    "test": "npm run test:comissao && npm run test:faixa",
+    "test:gerente": "node --experimental-strip-types --experimental-specifier-resolution=node src/lib/calcularGerente.test.ts",
+    "test": "npm run test:comissao && npm run test:faixa && npm run test:gerente",
     "lint": "eslint .",
     "preview": "vite preview"
   },

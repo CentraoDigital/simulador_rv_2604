@@ -11,6 +11,7 @@ Aplicação web desenvolvida em React + TypeScript + Vite para simular o novo mo
 ## 📋 Funcionalidades
 - **Cálculo em Tempo Real**: Os resultados são atualizados conforme os dados são alterados no formulário.
 - **Entrada Manual**: Campos organizados por blocos de remuneração (Serviços, Produtos/SVAs).
+- **Modo Gerente**: Simulação específica com produtividade ponderada, faixa PPL e totais sem/com acelerador.
 - **Importação de Arquivo**: Suporte para `.csv` e `.xlsx` com mapeamento inteligente de colunas.
 - **Baixar Modelo**: Função para exportar o arquivo base com as colunas esperadas pelo sistema.
 - **Visualização por Faixas**: Badges coloridos indicando o nível atingido (Laranja, Amarela, Verde, Púrpura).

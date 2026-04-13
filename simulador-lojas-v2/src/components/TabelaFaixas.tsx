@@ -48,7 +48,7 @@ const TabelaFaixas = () => {
           
           <div className="mt-4 pt-4 border-t text-xs text-muted-foreground">
             <p>* O valor unitário se aplica a todas as unidades do período caso a faixa seja atingida.</p>
-            <p>* Aceleradores do Bloco 2 requerem atingimento ponderado de produtividade maior ou igual a 100%.</p>
+            <p>* Aceleradores do Bloco 2 são ativados pela faixa geral de movimentos: Verde (48+) ou Púrpura (65+).</p>
           </div>
         </CardContent>
       )}

@@ -1,9 +1,9 @@
 # Simulador de Comissionamento Lojas v2 — Centrão Digital
 
-Aplicação web desenvolvida em React + Vite para simular o novo modelo de comissionamento individual de consultores de lojas Vivo.
+Aplicação web desenvolvida em React + TypeScript + Vite para simular o novo modelo de comissionamento individual de consultores de lojas Vivo.
 
 ## 🚀 Tecnologias
-- **React 18** (Vite)
+- **React 18 + TypeScript** (Vite)
 - **Tailwind CSS** (Estilização)
 - **Lucide React** (Ícones)
 - **SheetJS (XLSX)** (Processamento de arquivos)
@@ -14,8 +14,8 @@ Aplicação web desenvolvida em React + Vite para simular o novo modelo de comis
 - **Importação de Arquivo**: Suporte para `.csv` e `.xlsx` com mapeamento inteligente de colunas.
 - **Baixar Modelo**: Função para exportar o arquivo base com as colunas esperadas pelo sistema.
 - **Visualização por Faixas**: Badges coloridos indicando o nível atingido (Laranja, Amarela, Verde, Púrpura).
-- **Produtividade Ponderada**: Cálculo automático do atingimento com pesos por tipo de área (com/sem fibra).
-- **Aceleradores**: Aplicação automática das taxas aceleradas quando o atingimento ponderado >= 100%.
+- **Faixa Geral por Movimentos**: Soma automática de Fibra + Controle + Pós Puro com classificação Laranja/Amarela/Verde/Púrpura.
+- **Aceleradores**: Aplicação automática das taxas aceleradas quando a soma de movimentos for >= 48.
 
 ## 🛠️ Como Executar
 
@@ -47,8 +47,7 @@ npm run build
 ## 🧪 Testes
 Para validar a lógica de cálculo puramente via terminal:
 ```bash
-node src/lib/calcularComissao.test.js
-node src/lib/calcularProdutividade.test.js
+npm run test
 ```
 
 ---

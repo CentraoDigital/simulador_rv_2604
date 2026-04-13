@@ -1,4 +1,4 @@
-import { calcularProdutividade } from './calcularProdutividade.js'
+import { calcularProdutividade } from './calcularProdutividade.ts'
 
 function assertClose(actual, expected, message) {
   const epsilon = 0.000001

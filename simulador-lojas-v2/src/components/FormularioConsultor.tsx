@@ -5,7 +5,6 @@ import { Label } from './ui/Label'
 import { Separator } from './ui/Separator'
 import { Button } from './ui/Button'
 import { RefreshCcw } from 'lucide-react'
-import FormularioProdutividade from './FormularioProdutividade'
 
 const FormularioConsultor = ({ dados, handleChange, limpar }) => {
   const onNumberChange = (e) => {
@@ -23,16 +22,16 @@ const FormularioConsultor = ({ dados, handleChange, limpar }) => {
         </Button>
       </CardHeader>
       <CardContent className="space-y-6">
-        <FormularioProdutividade dados={dados} handleChange={handleChange} />
-
-        <Separator />
+        <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+          Informe apenas movimentos válidos para cálculo de comissão. Não incluir Reabilitação, Upgrade, Downgrade, Baixa ou Troca Lateral.
+        </div>
 
         {/* BLOCO 1 */}
         <div className="space-y-4">
           <h3 className="text-sm font-semibold text-primary uppercase tracking-wider">Bloco 1 — Serviços</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="volumeFibra">Fibra (FTTH)</Label>
+              <Label htmlFor="volumeFibra">Altas Fibra (FTTH)</Label>
               <Input 
                 id="volumeFibra" 
                 name="volumeFibra" 
@@ -41,10 +40,11 @@ const FormularioConsultor = ({ dados, handleChange, limpar }) => {
                 value={dados.volumeFibra || ""} 
                 onChange={onNumberChange} 
                 placeholder="0"
+                title="Somente Alta FTTH. Não incluir Reabilitação."
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="volumeControle">Controle</Label>
+              <Label htmlFor="volumeControle">Altas + Migrações Controle</Label>
               <Input 
                 id="volumeControle" 
                 name="volumeControle" 
@@ -53,10 +53,11 @@ const FormularioConsultor = ({ dados, handleChange, limpar }) => {
                 value={dados.volumeControle || ""} 
                 onChange={onNumberChange}
                 placeholder="0"
+                title="Alta Controle + Migração Pré para Controle. Não incluir Reabilitação."
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="volumePosPuro">Pós Puro</Label>
+              <Label htmlFor="volumePosPuro">Altas + Migrações Pós Puro</Label>
               <Input 
                 id="volumePosPuro" 
                 name="volumePosPuro" 
@@ -65,6 +66,7 @@ const FormularioConsultor = ({ dados, handleChange, limpar }) => {
                 value={dados.volumePosPuro || ""} 
                 onChange={onNumberChange}
                 placeholder="0"
+                title="Alta Pós Puro + Migração Pré para Pós Puro. Não incluir Reabilitação."
               />
             </div>
           </div>

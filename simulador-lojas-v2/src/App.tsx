@@ -2,7 +2,7 @@ import React from 'react'
 import { useSimulador } from './hooks/useSimulador'
 import FormularioConsultor from './components/FormularioConsultor'
 import ResultadoComissao from './components/ResultadoComissao'
-import ResultadoProdutividade from './components/ResultadoProdutividade'
+import CardFaixaGeral from './components/CardFaixaGeral'
 import UploadArquivo from './components/UploadArquivo'
 import TabelaFaixas from './components/TabelaFaixas'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/Tabs'
@@ -25,13 +25,6 @@ function App() {
       qtd_easy_anual: 'qtdEasyAnual',
       qtd_pelicula: 'qtdPelicula',
       qtd_vale_saude: 'qtdValeSaude',
-      tipo_area: 'tipoArea',
-      meta_pos_puro: 'metaPosPuro',
-      resultado_pos_puro: 'resultadoPosPuro',
-      meta_controle: 'metaControle',
-      resultado_controle: 'resultadoControle',
-      meta_ftth: 'metaFTTH',
-      resultado_ftth: 'resultadoFTTH',
     }
 
     setDados((prev) => {
@@ -93,7 +86,7 @@ function App() {
           <div className="lg:col-span-12 xl:col-span-5">
             <div className="sticky top-24">
               <div className="space-y-4">
-                <ResultadoProdutividade produtividade={resultado.produtividade} />
+                <CardFaixaGeral faixaGeral={resultado.faixaGeral} />
                 <ResultadoComissao resultado={resultado} />
               </div>
             </div>

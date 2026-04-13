@@ -1,4 +1,4 @@
-import { calcularProdutividade } from './calcularProdutividade.js'
+import { calcularFaixaGeral } from './calcularFaixaGeral.ts'
 
 const TABELAS_BLOCO1 = {
   fibra: [
@@ -75,12 +75,15 @@ function resQtd(quantidade, valorBase, valorAcelerador, aceleradorAtivo, temAcel
  * @returns {Object} resultado com detalhamento por item e total geral
  */
 export function calcularComissao(dados) {
-  const produtividade = calcularProdutividade(dados)
-  const { aceleradorAtivo } = produtividade
+  const vFibra = toInteiroPositivo(dados.volumeFibra)
+  const vControle = toInteiroPositivo(dados.volumeControle)
+  const vPosPuro = toInteiroPositivo(dados.volumePosPuro)
+  const faixaGeral = calcularFaixaGeral(vFibra, vControle, vPosPuro)
+  const { aceleradorAtivo } = faixaGeral
 
-  const resFibra = calcularServico(toInteiroPositivo(dados.volumeFibra), TABELAS_BLOCO1.fibra)
-  const resControle = calcularServico(toInteiroPositivo(dados.volumeControle), TABELAS_BLOCO1.controle)
-  const resPosPuro = calcularServico(toInteiroPositivo(dados.volumePosPuro), TABELAS_BLOCO1.posPuro)
+  const resFibra = calcularServico(vFibra, TABELAS_BLOCO1.fibra)
+  const resControle = calcularServico(vControle, TABELAS_BLOCO1.controle)
+  const resPosPuro = calcularServico(vPosPuro, TABELAS_BLOCO1.posPuro)
   const subtotalBloco1 = resFibra.total + resControle.total + resPosPuro.total
 
   const bloco2 = {
@@ -107,7 +110,7 @@ export function calcularComissao(dados) {
       ...bloco2,
       subtotal: subtotalBloco2,
     },
-    produtividade,
+    faixaGeral,
     aceleradorAtivo,
     totalGeral: subtotalBloco1 + subtotalBloco2,
   }

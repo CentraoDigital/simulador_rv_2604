@@ -1,30 +1,8 @@
-import { calcularComissao } from './calcularComissao.js'
+import { calcularComissao } from './calcularComissao.ts'
 
 function assertClose(actual, expected, message) {
   const epsilon = 0.000001
   console.assert(Math.abs(actual - expected) < epsilon, message)
-}
-
-function dadosProdutividadeAtiva() {
-  return {
-    tipoArea: 'com_fibra',
-    metaPosPuro: 0.4,
-    resultadoPosPuro: 0.4,
-    metaControle: 0.8,
-    resultadoControle: 0.8,
-    metaFTTH: 0.3,
-    resultadoFTTH: 0.3,
-  }
-}
-
-function dadosProdutividadeInativa() {
-  return {
-    tipoArea: 'sem_fibra',
-    metaPosPuro: 1,
-    resultadoPosPuro: 1,
-    metaControle: 1,
-    resultadoControle: 0.9,
-  }
 }
 
 function test() {
@@ -47,20 +25,22 @@ function test() {
   console.assert(resF16.bloco1.fibra.valorUnitario === 80, 'Fibra 16: deveria ser R$ 80')
 
   const dadosB2 = { receitaSmartphone: 1000, qtdValeSaude: 10 }
-  const resBase = calcularComissao({ ...dadosB2, ...dadosProdutividadeInativa() })
-  const resAcelerado = calcularComissao({ ...dadosB2, ...dadosProdutividadeAtiva() })
+  const resBase = calcularComissao({ ...dadosB2, volumeFibra: 10, volumeControle: 10, volumePosPuro: 10 }) // soma 30
+  const resAcelerado = calcularComissao({ ...dadosB2, volumeFibra: 16, volumeControle: 16, volumePosPuro: 16 }) // soma 48
   assertClose(resBase.bloco2.smartphone.total, 6, 'Erro Smartphone Base')
   assertClose(resAcelerado.bloco2.smartphone.total, 15, 'Erro Smartphone Acelerado')
   assertClose(resBase.bloco2.valeSaude.total, 50, 'Erro Vale Saúde Base')
   assertClose(resAcelerado.bloco2.valeSaude.total, 100, 'Erro Vale Saúde Acelerado')
+  console.assert(resBase.aceleradorAtivo === false, 'Soma 30 não deveria ativar acelerador')
+  console.assert(resAcelerado.aceleradorAtivo === true, 'Soma 48 deveria ativar acelerador')
 
-  const resEasyBase = calcularComissao({ qtdEasyAnual: 1, ...dadosProdutividadeInativa() })
-  const resEasyAcelerado = calcularComissao({ qtdEasyAnual: 1, ...dadosProdutividadeAtiva() })
+  const resEasyBase = calcularComissao({ qtdEasyAnual: 1, volumeFibra: 10, volumeControle: 10, volumePosPuro: 10 })
+  const resEasyAcelerado = calcularComissao({ qtdEasyAnual: 1, volumeFibra: 16, volumeControle: 16, volumePosPuro: 16 })
   console.assert(resEasyBase.bloco2.easyAnual.total === 25, 'Easy Anual erro base')
   console.assert(resEasyAcelerado.bloco2.easyAnual.total === 25, 'Easy Anual erro acelerado')
 
-  const resPeliculaBase = calcularComissao({ qtdPelicula: 2, ...dadosProdutividadeInativa() })
-  const resPeliculaAcelerado = calcularComissao({ qtdPelicula: 2, ...dadosProdutividadeAtiva() })
+  const resPeliculaBase = calcularComissao({ qtdPelicula: 2, volumeFibra: 10, volumeControle: 10, volumePosPuro: 10 })
+  const resPeliculaAcelerado = calcularComissao({ qtdPelicula: 2, volumeFibra: 16, volumeControle: 16, volumePosPuro: 16 })
   console.assert(resPeliculaBase.bloco2.pelicula.total === 20, 'Película erro base')
   console.assert(resPeliculaAcelerado.bloco2.pelicula.total === 20, 'Película erro acelerado')
 

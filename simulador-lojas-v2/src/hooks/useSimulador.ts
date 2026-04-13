@@ -13,13 +13,6 @@ const initialState = {
   qtdEasyAnual: 0,
   qtdPelicula: 0,
   qtdValeSaude: 0,
-  tipoArea: 'com_fibra',
-  metaPosPuro: 0,
-  resultadoPosPuro: 0,
-  metaControle: 0,
-  resultadoControle: 0,
-  metaFTTH: 0,
-  resultadoFTTH: 0,
 }
 
 export function useSimulador() {

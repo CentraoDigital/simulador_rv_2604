@@ -16,13 +16,6 @@ const COLUNAS_OBRIGATORIAS = [
   'qtd_easy_anual',
   'qtd_pelicula',
   'qtd_vale_saude',
-  'tipo_area',
-  'meta_pos_puro',
-  'resultado_pos_puro',
-  'meta_controle',
-  'resultado_controle',
-  'meta_ftth',
-  'resultado_ftth',
 ]
 
 const ALIASES = {
@@ -37,13 +30,6 @@ const ALIASES = {
   qtd_easy_anual: ['qtd_easy_anual', 'easy_anual', 'easy anual', 'easy'],
   qtd_pelicula: ['qtd_pelicula', 'pelicula', 'pelicula'],
   qtd_vale_saude: ['qtd_vale_saude', 'vale_saude', 'vale saude', 'vale saúde'],
-  tipo_area: ['tipo_area', 'tipo area', 'area', 'tipo de area'],
-  meta_pos_puro: ['meta_pos_puro', 'meta pos puro'],
-  resultado_pos_puro: ['resultado_pos_puro', 'resultado pos puro'],
-  meta_controle: ['meta_controle', 'meta controle'],
-  resultado_controle: ['resultado_controle', 'resultado controle'],
-  meta_ftth: ['meta_ftth', 'meta fibra', 'meta ftth'],
-  resultado_ftth: ['resultado_ftth', 'resultado fibra', 'resultado ftth'],
 }
 
 function normalizarChave(valor) {
@@ -75,21 +61,6 @@ function normalizarNumero(valor) {
 
   const numero = Number(normalizado)
   return Number.isFinite(numero) ? numero : 0
-}
-
-function normalizarTipoArea(valor) {
-  const chave = normalizarChave(valor).replace(/_/g, '')
-
-  if (['comfibra', 'comfixa', 'cfixa', 'cfibra'].includes(chave)) {
-    return 'com_fibra'
-  }
-  if (['semfibra', 'semfixa', 'sfixa', 'sfibra'].includes(chave)) {
-    return 'sem_fibra'
-  }
-
-  throw new Error(
-    `Valor inválido para "tipo_area": ${valor}. Use "com_fibra", "sem_fibra", "c/fixa", "s/fixa", "com fibra" ou "sem fibra".`,
-  )
 }
 
 const UploadArquivo = ({ onImport }) => {
@@ -147,10 +118,6 @@ const UploadArquivo = ({ onImport }) => {
         for (const campo of COLUNAS_OBRIGATORIAS) {
           const colunaReal = colunaRealPorCampo[campo]
           const valor = rawData[colunaReal]
-          if (campo === 'tipo_area') {
-            processedData[campo] = normalizarTipoArea(valor)
-            continue
-          }
           processedData[campo] = normalizarNumero(valor)
         }
 
@@ -176,13 +143,6 @@ const UploadArquivo = ({ onImport }) => {
       qtd_easy_anual: 1,
       qtd_pelicula: 2,
       qtd_vale_saude: 1,
-      tipo_area: 'com_fibra',
-      meta_pos_puro: 0.4,
-      resultado_pos_puro: 0.4,
-      meta_controle: 0.8,
-      resultado_controle: 0.75,
-      meta_ftth: 0.3,
-      resultado_ftth: 0.4,
     }]
     
     const ws = XLSX.utils.json_to_sheet(modelo)

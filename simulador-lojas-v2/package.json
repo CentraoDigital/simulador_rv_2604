@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test:comissao": "node --experimental-strip-types --experimental-specifier-resolution=node src/lib/calcularComissao.test.ts",
+    "test:faixa": "node --experimental-strip-types --experimental-specifier-resolution=node src/lib/calcularFaixaGeral.test.ts",
+    "test": "npm run test:comissao && npm run test:faixa",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -30,6 +33,7 @@
     "globals": "^15.11.0",
     "postcss": "^8.5.9",
     "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
     "vite": "^5.4.10"
   }
 }

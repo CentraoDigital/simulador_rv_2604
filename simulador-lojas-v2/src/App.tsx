@@ -3,6 +3,7 @@ import FormularioConsultor from './components/FormularioConsultor'
 import FormularioGerente from './components/FormularioGerente'
 import ResultadoComissao from './components/ResultadoComissao'
 import ResultadoGerente from './components/ResultadoGerente'
+import DashboardModos from './components/DashboardModos'
 import CardFaixaGeral from './components/CardFaixaGeral'
 import CardAtingimentoPPL from './components/CardAtingimentoPPL'
 import UploadArquivo from './components/UploadArquivo'
@@ -98,7 +99,9 @@ function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <Tabs defaultValue="consultor" className="w-full">
+        <DashboardModos resultadoConsultor={resultadoConsultor} resultadoGerente={resultadoGerente} />
+
+        <Tabs defaultValue="consultor" className="w-full mt-8">
           <TabsList className="grid w-full grid-cols-2 mb-6 h-12">
             <TabsTrigger value="consultor" className="text-base">👤 Consultor</TabsTrigger>
             <TabsTrigger value="gerente" className="text-base">👔 Gerente</TabsTrigger>

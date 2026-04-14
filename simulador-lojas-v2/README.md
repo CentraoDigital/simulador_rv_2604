@@ -45,6 +45,11 @@ Para gerar a versão final otimizada:
 npm run build
 ```
 
+## 🌐 Publicação no GitHub Pages
+- O projeto está configurado para deploy automático via GitHub Actions (`.github/workflows/deploy-pages.yml`).
+- A cada push na branch `main`, o workflow gera o build e publica em **Settings > Pages**.
+- O `base` do Vite é ajustado automaticamente para o nome do repositório durante o deploy, mantendo `/` no desenvolvimento local.
+
 ## 🧪 Testes
 Para validar a lógica de cálculo puramente via terminal:
 ```bash
